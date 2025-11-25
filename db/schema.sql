@@ -1,0 +1,47 @@
+CREATE TABLE BOOKS (
+    isbn TEXT PRIMARY KEY,
+    title TEXT NOT NULL,
+    author TEXT NOT NULL,
+    price REAL NOT NULL,
+    stock INTEGER NOT NULL
+);
+
+CREATE TABLE CUSTOMERS (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NUll,
+    email TEXT
+);
+
+CREATE TABLE ORDERS (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    customer_id INTEGER NOT NULL,
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+    FORIEGN KEY (customer_id) REFERENCES customers(id)
+);
+
+CREATE TABLE ORDER_ITEMS (
+    order_id INTEGER,
+    isbn TEXT,
+    quantity INTEGER,
+    price REAL,
+    FORIEGN KEY (order_id) REFERENCES orders(id),
+    FORIEGN KEY (isbn) REFERENCES books(isbn)
+);
+
+CREATE TABLE MESSAGES (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    session_id TEXT NOT NUll,
+    role TEXT NOT NULL,
+    context TEXT,
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE TOOL_CALLS (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    session_id TEXT NOT NULL,
+    name TEXT NOT NULL,
+    args_json TEXT,
+    result_json TEXT,
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP
+);
+
