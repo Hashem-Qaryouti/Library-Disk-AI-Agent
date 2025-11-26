@@ -31,6 +31,8 @@ Once you run the Streamlit app, you’ll see an interface like this:
 
 - Python 3.10+
 - Libraries (can be installed via `requirements.txt`):
+- [SQLite3](https://www.sqlite.org/index.html) – For storing messages, tool calls, books, and orders
+- [Ollama 3.1](https://ollama.com/) – LLM model used via LangChain Ollama integration
 
 ```bash
 pip install -r requirements.txt
