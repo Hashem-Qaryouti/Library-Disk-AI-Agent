@@ -109,6 +109,62 @@ sqlite3 db/library.db < db/seed.sql
 ollama pull llama3.1
 ```
 ---
+## Database Tables and Seed Instructions
+### 1. BOOKS
+Columns:
+- `isbn` (TEXT) → Primary Key, must be unique, not null.
+- `title` (TEXT) → Not null.
+- `author` (TEXT) → Not null.
+- `price` (REAL) → Not null, represents the book price.
+- `stock` (INTEGER) → Not null, represents quantity available.
+
+**Insertion rules:**
+- `isbn` must be unique for each book.
+- `title`, `author`, `price`, and `stock` cannot be null.
+
+---
+
+### 2. CUSTOMERS
+Columns:
+- `id` (INTEGER) → Primary Key, auto-incremented.
+- `name` (TEXT) → Not null.
+- `email` (TEXT) → Optional.
+
+**Insertion rules:**
+- `id` will be automatically generated.
+- `name` is required.
+- `email` can be left null.
+
+---
+
+### 3. ORDERS
+Columns:
+- `id` (INTEGER) → Primary Key, auto-incremented.
+- `customer_id` (INTEGER) → Not null, must reference a valid customer in `CUSTOMERS`.
+- `created_at` (TEXT) → Defaults to current timestamp if not provided.
+
+**Insertion rules:**
+- `customer_id` must exist in the `CUSTOMERS` table.
+- `created_at` can be omitted to use the current timestamp.
+
+---
+
+### 4. ORDER_ITEMS
+Columns:
+- `order_id` (INTEGER) → Foreign key, references `ORDERS.id`.
+- `isbn` (TEXT) → Foreign key, references `BOOKS.isbn`.
+- `quantity` (INTEGER) → Quantity of books in the order.
+- `price` (REAL) → Price of each item at order time.
+
+**Insertion rules:**
+- `order_id` must correspond to an existing order.
+- `isbn` must exist in the `BOOKS` table.
+- `quantity` should be a positive integer.
+- `price` should match or reflect the price of the book at order time.
+
+---
+
+This gives anyone manual guidance on **which columns are required, which are optional, and which are auto-generated** when seeding data.
 
 ## Usage
 1. Run the Backend API
