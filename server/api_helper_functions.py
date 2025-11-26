@@ -52,5 +52,3 @@ def call_agent(user_query: str):
         })
 
     return executed_tools
-
-    
