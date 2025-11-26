@@ -5,7 +5,7 @@ A conversational AI-powered library/bookstore assistant built with Streamlit for
 ---
 ## 🔁 Agent Wokflow
 
-![RAG Workflow](assets/flowchart.png)
+![Agent Workflow](assets/flowchart.png)
 ## Features
 
 - **Chat-based interface** to interact with the library agent.
