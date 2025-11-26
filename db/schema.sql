@@ -16,7 +16,7 @@ CREATE TABLE ORDERS (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     customer_id INTEGER NOT NULL,
     created_at TEXT DEFAULT CURRENT_TIMESTAMP,
-    FORIEGN KEY (customer_id) REFERENCES customers(id)
+    FOREIGN KEY (customer_id) REFERENCES customers(id)
 );
 
 CREATE TABLE ORDER_ITEMS (
@@ -24,8 +24,8 @@ CREATE TABLE ORDER_ITEMS (
     isbn TEXT,
     quantity INTEGER,
     price REAL,
-    FORIEGN KEY (order_id) REFERENCES orders(id),
-    FORIEGN KEY (isbn) REFERENCES books(isbn)
+    FOREIGN KEY (order_id) REFERENCES orders(id),
+    FOREIGN KEY (isbn) REFERENCES books(isbn)
 );
 
 CREATE TABLE MESSAGES (
