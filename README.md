@@ -115,9 +115,8 @@ ollama pull llama3.1
 ```bash
 uvicorn server.api:app --reload --host 0.0.0.0 --port 8000
 ```
-1. Run the Streamlit App
+2. Run the Streamlit App
 ```bash
-cd src
 streamlit run app/app.py
 ```
 - **Open the URL shown in your terminal (usually http://localhost:8501):**
