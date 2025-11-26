@@ -6,6 +6,14 @@ A conversational AI-powered library/bookstore assistant built with Streamlit for
 ## 🔁 Agent Wokflow
 
 ![Agent Workflow](assets/flowchart.png)
+1. User → Frontend: “User types message / selects session”
+2. Frontend → Backend: “Send user query”
+3. Backend → LLM Agent: “Send prompt + session context”
+4. LLM Agent → Tools: “Invoke tool calls if needed”
+5. Tools → Database: “Query/update data”
+6. Backend → Database: “Store messages / tool calls”
+7. Backend → Frontend: “Return agent response”
+8. Frontend → User: “Display agent response”
 ## Features
 
 - **Chat-based interface** to interact with the library agent.
