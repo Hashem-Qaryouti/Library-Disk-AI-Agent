@@ -72,16 +72,16 @@ cd <your-repo-name>
 ```
 ### 2. Create and activate a virtual environment
 ```bash
-python -m venv llama_env
+python -m venv <your-venv-name>
 ```
 #### Activate the environment:
 - **Windows:**
 ```bash
-llama_env\Scripts\activate
+<your-venv-name>\Scripts\activate
 ```
 - **Linux:**
 ```bash
-source llama_env/bin/activate
+source <your-venv-name>/bin/activate
 ```
 ### 3. Install dependencies
 ```bash
@@ -89,16 +89,24 @@ pip install -r requirements.txt
 
 ```
 
-### 4. Add your PDF
-Place your PDF file in the `data/` folder.
-Update paths.py or the PDF_PATH variable in `ingest_pdf.py` to point to your PDF file.
+### 4. Set up the Database 
+1. Create the SQLite database file (if not already created):
 
-### 5. Add your LLaMA model
-
-Place your downloaded LLaMA GGUF model in the `models/` folder.
-Example:
 ```bash
-models/Dolphin3.0-Llama3.2-1B-Q4_K_M.gguf
+touch db/library.db
+```
+2. Initialize the database schema:
+ ```bash
+sqlite3 db/library.db < db/schema.sql
+```
+3. Seed the database with initial data:
+ ```bash
+sqlite3 db/library.db < db/seed.sql
+```
+
+### 5. Pull the Ollama Model
+```bash
+ollama pull llama3.1
 ```
 ---
 
