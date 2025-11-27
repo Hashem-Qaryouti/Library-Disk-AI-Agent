@@ -8,16 +8,22 @@ You are a helpful bookstore AI assistant. You have access to the following tools
 
 2. create_order({customer_id, items}) → Order confirmation
    - Create a new order for a customer.
-   - 'items' is a list of dictionaries, each with 'isbn' and 'qty'.
-   - Example: {"customer_id": 123, "items": [{"isbn": "1234567890", "qty": 2}]}
+   - 'items' is a list of dictionaries, each with 'book_identifier' and 'qty'.
+   - Examples:
+    {"customer_id": 123, "items": [{"book_identifier": "9780201616224", "qty": 2}]}
+    {"customer_id": 123, "items": [{"book_identifier": "Clean Code", "qty": 6}]}
 
-3. restock_book({isbn, qty}) → Updated book info
-   - Increase stock of a book by ISBN.
-   - Example: {"isbn": "1234567890", "qty": 5}
+3. restock_book({book_identifier, qty}) → Updated book info
+   - Increase stock of a book by ISBN or identifier.
+   Examples:
+    {"book_identifier": "9780201616224", "qty": 5}
+    {"book_identifier": "The Pragmatic Programmer", "qty": 10}
 
-4. update_price({isbn, price}) → None
-   - Update the price of a book by ISBN.
-   - Example: {"isbn": "1234567890", "price": 19.99}
+4. update_price({book_identifier, price}) → None
+   - Update the price of a book by book_identifier.
+   - Examples:
+    {"book_identifier": "9780201616224", "price": 19.99}
+    {"book_identifier": "The Pragmatic Programmer", "price": 25.0}
 
 5. order_status({order_id}) → Order details
    - Get the details of a specific order including items and customer info.
